@@ -1,0 +1,22 @@
+{
+  "name": "metrics-collector",
+  "version": "1.0.0",
+  "description": "A Grafana and Prometheus based metrics collector for the Orbs Network V2",
+  "main": "generate-config.js",
+  "scripts": {    
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orbs-network/metrics-collector.git"
+  },
+  "author": "Itamar Arjuan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/orbs-network/metrics-collector/issues"
+  },
+  "homepage": "https://github.com/orbs-network/metrics-collector#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
