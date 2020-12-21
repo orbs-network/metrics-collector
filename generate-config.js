@@ -33,6 +33,56 @@ async function getConfiguration() {
     return jobs;
 }
 
+function getConfigurationOfTrynet() {
+    const nodes = [
+        {
+            name: 'node1',
+            ip: '13.125.39.36',
+        },
+        {
+            name: 'us-1',
+            ip: '184.72.231.126',
+        },
+        {
+            name: 'us-2',
+            ip: '34.195.181.208',
+        },
+        {
+            name: 'us-3',
+            ip: '13.57.172.231',
+        },
+        {
+            name: 'us-4',
+            ip: '18.144.136.174',
+        },
+        {
+            name: 'us-5',
+            ip: '52.9.126.127'
+        },
+    ];
+
+    const vcs = [7777, 8888, 9998, 9999];
+    const jobs = [];
+
+    for (let k in vcs) {
+        for (let n in nodes) {
+            let ip = nodes[n].ip;
+            let vcId = vcs[k];
+
+            let job = {
+                name: `${ip.replace(/\./g, '_')}_${vcId}`,
+                target: `${ip}`,
+                metrics_path: `/vchains/${vcId}/metrics.prometheus`,
+                vcid: vcId.toString(),
+                label: ip.replace(/\./g, '_'),
+            };
+            jobs.push(job);
+        }
+    }
+
+    return jobs;
+}
+
 function detectConfigChanges({ oldConfig, newConfig, removeCallback, addCallback }) {
     const mergedConfig = [];
 
@@ -68,7 +118,11 @@ function interpolate({ base, job }) {
 (async () => {
     let basePrConfig = await promisify(fs.readFile)('./prometheus/prometheus-base.yml', 'utf-8');
     const base = await promisify(fs.readFile)('./prometheus/job_template.yml', 'utf-8');
-    const jobs = await getConfiguration();
+
+    let v2Jobs = await getConfiguration();
+    let trynetJobs = getConfigurationOfTrynet();
+    const jobs = [].concat(v2Jobs, trynetJobs);    
+
     let jobsInterpolated = '';
 
     for (let i in jobs) {
