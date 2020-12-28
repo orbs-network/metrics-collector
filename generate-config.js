@@ -25,7 +25,7 @@ async function getConfiguration() {
                 target: `${node.Ip}`,
                 metrics_path: `/vchains/${chain.Id}/metrics.prometheus`,
                 vcid: chain.Id,
-                label: node.Ip.replace(/\./g, '_'),
+                label: node.Name,
             });
         }
     }
@@ -74,7 +74,7 @@ function getConfigurationOfTrynet() {
                 target: `${ip}`,
                 metrics_path: `/vchains/${vcId}/metrics.prometheus`,
                 vcid: vcId.toString(),
-                label: ip.replace(/\./g, '_'),
+                label: nodes[n].name,
             };
             jobs.push(job);
         }
@@ -121,7 +121,7 @@ function interpolate({ base, job }) {
 
     let v2Jobs = await getConfiguration();
     let trynetJobs = getConfigurationOfTrynet();
-    const jobs = [].concat(v2Jobs, trynetJobs);    
+    const jobs = [].concat(v2Jobs, trynetJobs);
 
     let jobsInterpolated = '';
 

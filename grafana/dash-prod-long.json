@@ -1,46 +1,4 @@
 {
-    "__inputs": [
-        {
-            "name": "DS_MARVIN-PROMETHEUS",
-            "label": "Marvin-Prometheus",
-            "description": "",
-            "type": "datasource",
-            "pluginId": "prometheus",
-            "pluginName": "Prometheus"
-        }
-    ],
-    "__requires": [
-        {
-            "type": "grafana",
-            "id": "grafana",
-            "name": "Grafana",
-            "version": "5.1.0"
-        },
-        {
-            "type": "panel",
-            "id": "graph",
-            "name": "Graph",
-            "version": "5.0.0"
-        },
-        {
-            "type": "datasource",
-            "id": "prometheus",
-            "name": "Prometheus",
-            "version": "5.0.0"
-        },
-        {
-            "type": "panel",
-            "id": "singlestat",
-            "name": "Singlestat",
-            "version": "5.0.0"
-        },
-        {
-            "type": "panel",
-            "id": "table",
-            "name": "Table",
-            "version": "5.0.0"
-        }
-    ],
     "annotations": {
         "list": [
             {
@@ -57,8 +15,8 @@
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": null,
-    "iteration": 1568546671942,
+    "id": 1,
+    "iteration": 1609158179431,
     "links": [],
     "panels": [
         {
@@ -70,7 +28,13 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "none",
             "gauge": {
                 "maxValue": 100,
@@ -102,7 +66,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -123,7 +86,7 @@
             "tableColumn": "",
             "targets": [
                 {
-                    "expr": "max(BlockStorage_BlockHeight)",
+                    "expr": "max(BlockStorage_BlockHeight{vcid=~\"$vchain\"})",
                     "format": "time_series",
                     "instant": true,
                     "intervalFactor": 1,
@@ -155,7 +118,13 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#299c46"
             ],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "none",
             "gauge": {
                 "maxValue": 100,
@@ -187,7 +156,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -208,7 +176,7 @@
             "tableColumn": "",
             "targets": [
                 {
-                    "expr": "count(count by (machine) (BlockStorage_BlockHeight))",
+                    "expr": "count(count by (machine) (BlockStorage_BlockHeight{vcid=~\"$vchain\"}))",
                     "format": "time_series",
                     "instant": true,
                     "intervalFactor": 1,
@@ -239,7 +207,13 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "none",
             "gauge": {
                 "maxValue": 100,
@@ -271,7 +245,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -322,7 +295,13 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "s",
             "gauge": {
                 "maxValue": 100,
@@ -354,7 +333,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -375,7 +353,7 @@
             "tableColumn": "",
             "targets": [
                 {
-                    "expr": "max(Runtime_Uptime_Seconds)",
+                    "expr": "max(Runtime_Uptime_Seconds{vcid=~\"$vchain\"})",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "refId": "A"
@@ -405,7 +383,13 @@
                 "rgba(237, 129, 40, 0.89)",
                 "#d44a3a"
             ],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "format": "none",
             "gauge": {
                 "maxValue": 100,
@@ -437,7 +421,6 @@
             "maxDataPoints": 100,
             "nullPointMode": "connected",
             "nullText": null,
-            "options": {},
             "postfix": "",
             "postfixFontSize": "50%",
             "prefix": "",
@@ -458,7 +441,7 @@
             "tableColumn": "",
             "targets": [
                 {
-                    "expr": "max(BlockStorage_BlockHeight)-min(BlockStorage_BlockHeight)",
+                    "expr": "max(BlockStorage_BlockHeight{vcid=~\"$vchain\"})-min(BlockStorage_BlockHeight{vcid=~\"$vchain\"})",
                     "format": "time_series",
                     "instant": true,
                     "intervalFactor": 1,
@@ -488,12 +471,18 @@
                 "endCountdownTime": "2019-03-29T11:16:00.000Z",
                 "endText": "00:00:00"
             },
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
             "dateSettings": {
                 "dateFormat": "YYYY-MM-DD",
                 "fontSize": "24px",
                 "fontWeight": "normal",
                 "showDate": false
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
             },
             "gridPos": {
                 "h": 2,
@@ -506,7 +495,32 @@
             "mode": "time",
             "offsetFromUtc": null,
             "offsetFromUtcMinutes": null,
-            "options": {},
+            "options": {
+                "bgColor": "",
+                "clockType": "24 hour",
+                "countdownSettings": {
+                    "endCountdownTime": "2020-12-22T21:42:17+02:00",
+                    "endText": "00:00:00"
+                },
+                "dateSettings": {
+                    "dateFormat": "YYYY-MM-DD",
+                    "fontSize": "20px",
+                    "fontWeight": "normal",
+                    "showDate": false
+                },
+                "mode": "time",
+                "timeSettings": {
+                    "fontSize": "12px",
+                    "fontWeight": "normal"
+                },
+                "timezone": "",
+                "timezoneSettings": {
+                    "fontSize": "12px",
+                    "fontWeight": "normal",
+                    "showTimezone": false,
+                    "zoneFormat": "offsetAbbv"
+                }
+            },
             "refreshSettings": {
                 "syncWithDashboard": false
             },
@@ -532,6 +546,7 @@
         },
         {
             "collapsed": false,
+            "datasource": null,
             "gridPos": {
                 "h": 1,
                 "w": 24,
@@ -545,17 +560,22 @@
         },
         {
             "columns": [],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "fontSize": "100%",
             "gridPos": {
-                "h": 14,
+                "h": 2,
                 "w": 6,
                 "x": 0,
                 "y": 3
             },
             "id": 83,
             "links": [],
-            "options": {},
             "pageSize": null,
             "scroll": true,
             "showHeader": true,
@@ -566,6 +586,7 @@
             "styles": [
                 {
                     "alias": "Time",
+                    "align": "auto",
                     "colorMode": null,
                     "dateFormat": "YYYY-MM-DD HH:mm:ss",
                     "pattern": "Value",
@@ -578,6 +599,7 @@
                 },
                 {
                     "alias": "",
+                    "align": "auto",
                     "colorMode": null,
                     "colors": [
                         "rgba(245, 54, 54, 0.9)",
@@ -592,6 +614,7 @@
                 },
                 {
                     "alias": "",
+                    "align": "auto",
                     "colorMode": null,
                     "colors": [
                         "rgba(245, 54, 54, 0.9)",
@@ -621,21 +644,26 @@
             "timeShift": null,
             "title": "Time since last committed block",
             "transform": "table",
-            "type": "table"
+            "type": "table-old"
         },
         {
             "columns": [],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
             "fontSize": "100%",
             "gridPos": {
-                "h": 14,
+                "h": 2,
                 "w": 6,
                 "x": 6,
                 "y": 3
             },
             "id": 82,
             "links": [],
-            "options": {},
             "pageSize": null,
             "scroll": true,
             "showHeader": true,
@@ -646,6 +674,7 @@
             "styles": [
                 {
                     "alias": "",
+                    "align": "auto",
                     "colorMode": null,
                     "colors": [
                         "rgba(245, 54, 54, 0.9)",
@@ -660,6 +689,7 @@
                 },
                 {
                     "alias": "",
+                    "align": "auto",
                     "colorMode": null,
                     "colors": [
                         "rgba(245, 54, 54, 0.9)",
@@ -688,15 +718,22 @@
             "timeShift": null,
             "title": "Last Seen",
             "transform": "table",
-            "type": "table"
+            "type": "table-old"
         },
         {
             "aliasColors": {},
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
             "description": "Transactions per second in closed blocks",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 0,
             "fillGradient": 0,
             "gridPos": {
@@ -705,6 +742,7 @@
                 "x": 12,
                 "y": 3
             },
+            "hiddenSeries": false,
             "hideTimeOverride": false,
             "id": 4,
             "legend": {
@@ -721,10 +759,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -734,7 +773,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "rate(TransactionPool_TotalCommits_Count[1m])",
+                    "expr": "rate(TransactionPool_TotalCommits_Count{vcid=~\"$vchain\", machine=\"$validator\"}[1m])",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
@@ -788,7 +827,14 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 0,
             "fillGradient": 0,
             "gridPos": {
@@ -797,6 +843,7 @@
                 "x": 18,
                 "y": 3
             },
+            "hiddenSeries": false,
             "id": 20,
             "interval": "",
             "legend": {
@@ -813,10 +860,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": true,
             "renderer": "flot",
@@ -826,7 +874,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "ConsensusAlgo_LeanHelix_CurrentElection_Number",
+                    "expr": "ConsensusAlgo_LeanHelix_CurrentElection_Number{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
@@ -890,7 +938,185 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 6,
+                "w": 6,
+                "x": 0,
+                "y": 5
+            },
+            "hiddenSeries": false,
+            "hideTimeOverride": false,
+            "id": 14,
+            "interval": "",
+            "legend": {
+                "alignAsTable": false,
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": false,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "paceLength": 10,
+            "percentage": false,
+            "pluginVersion": "7.3.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "OS_Process_Memory_Bytes{vcid=~\"$vchain\"}",
+                    "format": "time_series",
+                    "instant": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{machine}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Memory usage per node",
+            "tooltip": {
+                "shared": true,
+                "sort": 2,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "decbytes",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "columns": [],
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fontSize": "100%",
+            "gridPos": {
+                "h": 14,
+                "w": 6,
+                "x": 6,
+                "y": 5
+            },
+            "id": 74,
+            "links": [],
+            "pageSize": null,
+            "scroll": true,
+            "showHeader": true,
+            "sort": {
+                "col": 7,
+                "desc": true
+            },
+            "styles": [
+                {
+                    "alias": "Time",
+                    "align": "auto",
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "pattern": "Time",
+                    "type": "hidden"
+                },
+                {
+                    "alias": "",
+                    "align": "auto",
+                    "colorMode": null,
+                    "colors": [
+                        "rgba(245, 54, 54, 0.9)",
+                        "rgba(237, 129, 40, 0.89)",
+                        "rgba(50, 172, 45, 0.97)"
+                    ],
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "decimals": 2,
+                    "mappingType": 1,
+                    "pattern": "/__name|instance|job|region|vchain/",
+                    "thresholds": [],
+                    "type": "hidden",
+                    "unit": "short"
+                }
+            ],
+            "targets": [
+                {
+                    "expr": "Ethereum_Node_LastBlock{vcid=~\"$vchain\"}",
+                    "format": "table",
+                    "instant": true,
+                    "intervalFactor": 1,
+                    "legendFormat": "{{machine}}",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Ethereum Node Last Block",
+            "transform": "table",
+            "type": "table-old"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
@@ -899,6 +1125,7 @@
                 "x": 12,
                 "y": 9
             },
+            "hiddenSeries": false,
             "id": 52,
             "legend": {
                 "avg": false,
@@ -914,10 +1141,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -927,7 +1155,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "BlockStorage_FileSystemSize_Bytes",
+                    "expr": "BlockStorage_FileSystemSize_Bytes{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
@@ -981,8 +1209,15 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
             "decimals": 0,
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 0,
             "fillGradient": 0,
             "gridPos": {
@@ -991,6 +1226,7 @@
                 "x": 18,
                 "y": 9
             },
+            "hiddenSeries": false,
             "id": 28,
             "legend": {
                 "avg": false,
@@ -1006,10 +1242,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -1019,7 +1256,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "BlockStorage_BlockHeight  ",
+                    "expr": "BlockStorage_BlockHeight{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "hide": false,
                     "instant": false,
@@ -1072,311 +1309,27 @@
             }
         },
         {
-            "columns": [],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
-            "description": "Measured on BlockStorage service",
-            "fontSize": "100%",
-            "gridPos": {
-                "h": 16,
-                "w": 6,
-                "x": 18,
-                "y": 15
-            },
-            "id": 77,
-            "links": [],
-            "options": {},
-            "pageSize": null,
-            "scroll": true,
-            "showHeader": true,
-            "sort": {
-                "col": 7,
-                "desc": true
-            },
-            "styles": [
-                {
-                    "alias": "Time",
-                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                    "pattern": "Time",
-                    "type": "hidden"
-                },
-                {
-                    "alias": "",
-                    "colorMode": null,
-                    "colors": [
-                        "rgba(245, 54, 54, 0.9)",
-                        "rgba(237, 129, 40, 0.89)",
-                        "rgba(50, 172, 45, 0.97)"
-                    ],
-                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                    "decimals": 2,
-                    "mappingType": 1,
-                    "pattern": "/__name|instance|job|region|vchain/",
-                    "thresholds": [],
-                    "type": "hidden",
-                    "unit": "short"
-                }
-            ],
-            "targets": [
-                {
-                    "expr": "BlockStorage_BlockHeight",
-                    "format": "table",
-                    "instant": true,
-                    "intervalFactor": 1,
-                    "legendFormat": "{{machine}}",
-                    "refId": "A"
-                }
-            ],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Latest committed block",
-            "transform": "table",
-            "type": "table"
-        },
-        {
             "aliasColors": {},
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 6,
                 "x": 0,
-                "y": 17
+                "y": 11
             },
-            "hideTimeOverride": false,
-            "id": 14,
-            "interval": "",
-            "legend": {
-                "alignAsTable": false,
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": false,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "options": {
-                "dataLinks": []
-            },
-            "paceLength": 10,
-            "percentage": false,
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "expr": "OS_Process_Memory_Bytes",
-                    "format": "time_series",
-                    "instant": false,
-                    "interval": "",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{machine}}",
-                    "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Memory usage per node",
-            "tooltip": {
-                "shared": true,
-                "sort": 2,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "decbytes",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                },
-                {
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-        },
-        {
-            "columns": [],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
-            "fontSize": "100%",
-            "gridPos": {
-                "h": 14,
-                "w": 6,
-                "x": 6,
-                "y": 17
-            },
-            "id": 74,
-            "links": [],
-            "options": {},
-            "pageSize": null,
-            "scroll": true,
-            "showHeader": true,
-            "sort": {
-                "col": 7,
-                "desc": true
-            },
-            "styles": [
-                {
-                    "alias": "Time",
-                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                    "pattern": "Time",
-                    "type": "hidden"
-                },
-                {
-                    "alias": "",
-                    "colorMode": null,
-                    "colors": [
-                        "rgba(245, 54, 54, 0.9)",
-                        "rgba(237, 129, 40, 0.89)",
-                        "rgba(50, 172, 45, 0.97)"
-                    ],
-                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                    "decimals": 2,
-                    "mappingType": 1,
-                    "pattern": "/__name|instance|job|region|vchain/",
-                    "thresholds": [],
-                    "type": "hidden",
-                    "unit": "short"
-                }
-            ],
-            "targets": [
-                {
-                    "expr": "Ethereum_Node_LastBlock",
-                    "format": "table",
-                    "instant": true,
-                    "intervalFactor": 1,
-                    "legendFormat": "{{machine}}",
-                    "refId": "A"
-                }
-            ],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Ethereum Node Last Block",
-            "transform": "table",
-            "type": "table"
-        },
-        {
-            "columns": [],
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
-            "fontSize": "100%",
-            "gridPos": {
-                "h": 14,
-                "w": 6,
-                "x": 12,
-                "y": 17
-            },
-            "id": 78,
-            "links": [],
-            "options": {},
-            "pageSize": null,
-            "scroll": true,
-            "showHeader": true,
-            "sort": {
-                "col": 7,
-                "desc": true
-            },
-            "styles": [
-                {
-                    "alias": "Time",
-                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                    "pattern": "Time",
-                    "type": "hidden"
-                },
-                {
-                    "alias": "",
-                    "colorMode": null,
-                    "colors": [
-                        "rgba(245, 54, 54, 0.9)",
-                        "rgba(237, 129, 40, 0.89)",
-                        "rgba(50, 172, 45, 0.97)"
-                    ],
-                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                    "decimals": 2,
-                    "mappingType": 1,
-                    "pattern": "/__name|instance|job|region|vchain/",
-                    "thresholds": [],
-                    "type": "hidden",
-                    "unit": "short"
-                },
-                {
-                    "alias": "",
-                    "colorMode": null,
-                    "colors": [
-                        "rgba(245, 54, 54, 0.9)",
-                        "rgba(237, 129, 40, 0.89)",
-                        "rgba(50, 172, 45, 0.97)"
-                    ],
-                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
-                    "decimals": 2,
-                    "mappingType": 1,
-                    "pattern": "Value",
-                    "thresholds": [],
-                    "type": "number",
-                    "unit": "s"
-                }
-            ],
-            "targets": [
-                {
-                    "expr": "Runtime_Uptime_Seconds",
-                    "format": "table",
-                    "instant": true,
-                    "intervalFactor": 1,
-                    "legendFormat": "{{machine}}",
-                    "refId": "A"
-                }
-            ],
-            "timeFrom": null,
-            "timeShift": null,
-            "title": "Time since restart",
-            "transform": "table",
-            "type": "table"
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
-            "fill": 1,
-            "fillGradient": 0,
-            "gridPos": {
-                "h": 6,
-                "w": 6,
-                "x": 0,
-                "y": 23
-            },
+            "hiddenSeries": false,
             "id": 34,
             "legend": {
                 "avg": false,
@@ -1392,10 +1345,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -1405,7 +1359,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "Runtime_NumGoroutine_Number",
+                    "expr": "Runtime_NumGoroutine_Number{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -1454,19 +1408,95 @@
             }
         },
         {
+            "columns": [],
+            "datasource": "Prom-Prod",
+            "description": "Measured on BlockStorage service",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fontSize": "100%",
+            "gridPos": {
+                "h": 16,
+                "w": 6,
+                "x": 18,
+                "y": 15
+            },
+            "id": 77,
+            "links": [],
+            "pageSize": null,
+            "scroll": true,
+            "showHeader": true,
+            "sort": {
+                "col": 7,
+                "desc": true
+            },
+            "styles": [
+                {
+                    "alias": "Time",
+                    "align": "auto",
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "pattern": "Time",
+                    "type": "hidden"
+                },
+                {
+                    "alias": "",
+                    "align": "auto",
+                    "colorMode": null,
+                    "colors": [
+                        "rgba(245, 54, 54, 0.9)",
+                        "rgba(237, 129, 40, 0.89)",
+                        "rgba(50, 172, 45, 0.97)"
+                    ],
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "decimals": 2,
+                    "mappingType": 1,
+                    "pattern": "/__name|instance|job|region|vchain/",
+                    "thresholds": [],
+                    "type": "hidden",
+                    "unit": "short"
+                }
+            ],
+            "targets": [
+                {
+                    "expr": "BlockStorage_BlockHeight{vcid=~\"$vchain\"}",
+                    "format": "table",
+                    "instant": true,
+                    "intervalFactor": 1,
+                    "legendFormat": "{{machine}}",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Latest committed block",
+            "transform": "table",
+            "type": "table-old"
+        },
+        {
             "aliasColors": {},
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 0,
             "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 6,
                 "x": 0,
-                "y": 29
+                "y": 17
             },
+            "hiddenSeries": false,
             "id": 56,
             "legend": {
                 "avg": false,
@@ -1482,10 +1512,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -1495,7 +1526,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "StateStoragePersistence_TotalNumberOfKeys_Count",
+                    "expr": "StateStoragePersistence_TotalNumberOfKeys_Count{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -1546,19 +1577,295 @@
             }
         },
         {
+            "columns": [],
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fontSize": "100%",
+            "gridPos": {
+                "h": 14,
+                "w": 6,
+                "x": 12,
+                "y": 17
+            },
+            "id": 78,
+            "links": [],
+            "pageSize": null,
+            "scroll": true,
+            "showHeader": true,
+            "sort": {
+                "col": 7,
+                "desc": true
+            },
+            "styles": [
+                {
+                    "alias": "Time",
+                    "align": "auto",
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "pattern": "Time",
+                    "type": "hidden"
+                },
+                {
+                    "alias": "",
+                    "align": "auto",
+                    "colorMode": null,
+                    "colors": [
+                        "rgba(245, 54, 54, 0.9)",
+                        "rgba(237, 129, 40, 0.89)",
+                        "rgba(50, 172, 45, 0.97)"
+                    ],
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "decimals": 2,
+                    "mappingType": 1,
+                    "pattern": "/__name|instance|job|region|vchain/",
+                    "thresholds": [],
+                    "type": "hidden",
+                    "unit": "short"
+                },
+                {
+                    "alias": "",
+                    "align": "auto",
+                    "colorMode": null,
+                    "colors": [
+                        "rgba(245, 54, 54, 0.9)",
+                        "rgba(237, 129, 40, 0.89)",
+                        "rgba(50, 172, 45, 0.97)"
+                    ],
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "decimals": 2,
+                    "mappingType": 1,
+                    "pattern": "Value",
+                    "thresholds": [],
+                    "type": "number",
+                    "unit": "s"
+                }
+            ],
+            "targets": [
+                {
+                    "expr": "Runtime_Uptime_Seconds{vcid=~\"$vchain\"}",
+                    "format": "table",
+                    "instant": true,
+                    "intervalFactor": 1,
+                    "legendFormat": "{{machine}}",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Time since restart",
+            "transform": "table",
+            "type": "table-old"
+        },
+        {
+            "columns": [],
+            "datasource": "Marvin-MySQL",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {}
+                },
+                "overrides": []
+            },
+            "fontSize": "100%",
+            "gridPos": {
+                "h": 14,
+                "w": 6,
+                "x": 6,
+                "y": 19
+            },
+            "id": 89,
+            "links": [],
+            "pageSize": null,
+            "scroll": true,
+            "showHeader": true,
+            "sort": {
+                "col": 7,
+                "desc": true
+            },
+            "styles": [
+                {
+                    "alias": "Time",
+                    "align": "auto",
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "pattern": "Time",
+                    "type": "hidden"
+                },
+                {
+                    "alias": "",
+                    "align": "auto",
+                    "colorMode": null,
+                    "colors": [
+                        "rgba(245, 54, 54, 0.9)",
+                        "rgba(237, 129, 40, 0.89)",
+                        "rgba(50, 172, 45, 0.97)"
+                    ],
+                    "dateFormat": "YYYY-MM-DD HH:mm:ss",
+                    "decimals": 2,
+                    "mappingType": 1,
+                    "pattern": "/__name|instance|job|region|vchain/",
+                    "thresholds": [],
+                    "type": "hidden",
+                    "unit": "short"
+                }
+            ],
+            "targets": [
+                {
+                    "format": "table",
+                    "group": [],
+                    "metricColumn": "none",
+                    "rawQuery": true,
+                    "rawSql": "select * from validators",
+                    "refId": "A",
+                    "select": [
+                        [
+                            {
+                                "params": [
+                                    "value"
+                                ],
+                                "type": "column"
+                            }
+                        ]
+                    ],
+                    "timeColumn": "time",
+                    "where": [
+                        {
+                            "name": "$__timeFilter",
+                            "params": [],
+                            "type": "macro"
+                        }
+                    ]
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Ethereum Node Last Block",
+            "transform": "table",
+            "type": "table-old"
+        },
+        {
             "aliasColors": {},
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 6,
+                "w": 7,
+                "x": 13,
+                "y": 31
+            },
+            "hiddenSeries": false,
+            "id": 72,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": false,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "links": [],
+            "nullPointMode": "null",
+            "options": {
+                "alertThreshold": true
+            },
+            "paceLength": 10,
+            "percentage": false,
+            "pluginVersion": "7.3.4",
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "TransactionPool_CommittedPool_PoolSize_Bytes{vcid=~\"$vchain\"}",
+                    "format": "time_series",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{machine}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "TransactionPool Committed size (bytes)",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "decbytes",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": "0",
+                    "show": true
+                },
+                {
+                    "format": "decbytes",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": false
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 7,
                 "x": 6,
-                "y": 31
+                "y": 33
             },
+            "hiddenSeries": false,
             "id": 70,
             "legend": {
                 "avg": false,
@@ -1574,10 +1881,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -1587,7 +1895,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "TransactionPool_CommittedPool_Transactions_Count",
+                    "expr": "TransactionPool_CommittedPool_Transactions_Count{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -1640,16 +1948,24 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
-            "fill": 1,
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 0,
             "fillGradient": 0,
             "gridPos": {
                 "h": 6,
-                "w": 7,
-                "x": 13,
-                "y": 31
+                "w": 9,
+                "x": 14,
+                "y": 37
             },
-            "id": 72,
+            "hiddenSeries": false,
+            "id": 18,
             "legend": {
                 "avg": false,
                 "current": false,
@@ -1664,21 +1980,24 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
+            "repeat": null,
             "seriesOverrides": [],
             "spaceLength": 10,
             "stack": false,
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "TransactionPool_CommittedPool_PoolSize_Bytes",
+                    "expr": "rate(PublicApi_TotalTransactionsFromClients_Count{vcid=~\"$vchain\"}[1m])",
                     "format": "time_series",
+                    "interval": "",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
                     "refId": "A"
@@ -1688,10 +2007,10 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "TransactionPool Committed size (bytes)",
+            "title": "Incoming transactions per second",
             "tooltip": {
                 "shared": true,
-                "sort": 0,
+                "sort": 2,
                 "value_type": "individual"
             },
             "type": "graph",
@@ -1704,7 +2023,7 @@
             },
             "yaxes": [
                 {
-                    "format": "decbytes",
+                    "format": "short",
                     "label": null,
                     "logBase": 1,
                     "max": null,
@@ -1712,7 +2031,7 @@
                     "show": true
                 },
                 {
-                    "format": "decbytes",
+                    "format": "short",
                     "label": null,
                     "logBase": 1,
                     "max": null,
@@ -1731,15 +2050,23 @@
             "cacheTimeout": null,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 7,
                 "x": 0,
-                "y": 37
+                "y": 39
             },
+            "hiddenSeries": false,
             "id": 66,
             "legend": {
                 "avg": false,
@@ -1755,10 +2082,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -1768,7 +2096,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "TransactionPool_PendingPool_Transactions_Count",
+                    "expr": "TransactionPool_PendingPool_Transactions_Count{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
@@ -1822,15 +2150,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
             "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 7,
                 "x": 7,
-                "y": 37
+                "y": 39
             },
+            "hiddenSeries": false,
             "id": 68,
             "legend": {
                 "avg": false,
@@ -1846,10 +2182,11 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -1859,7 +2196,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "TransactionPool_PendingPool_PoolSize_Bytes",
+                    "expr": "TransactionPool_PendingPool_PoolSize_Bytes{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -1912,16 +2249,24 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
-            "fill": 0,
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
+            "fill": 1,
             "fillGradient": 0,
             "gridPos": {
                 "h": 6,
-                "w": 9,
-                "x": 14,
-                "y": 37
+                "w": 6,
+                "x": 18,
+                "y": 43
             },
-            "id": 18,
+            "hiddenSeries": false,
+            "id": 84,
             "legend": {
                 "avg": false,
                 "current": false,
@@ -1936,23 +2281,22 @@
             "links": [],
             "nullPointMode": "null",
             "options": {
-                "dataLinks": []
+                "alertThreshold": true
             },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
-            "repeat": null,
             "seriesOverrides": [],
             "spaceLength": 10,
             "stack": false,
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "rate(PublicApi_TotalTransactionsFromClients_Count[1m])",
+                    "expr": "quantile_over_time(1,OS_Process_CPU_PerCent{vcid=~\"$vchain\"}[1m])  ",
                     "format": "time_series",
-                    "interval": "",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
                     "refId": "A"
@@ -1962,7 +2306,7 @@
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
-            "title": "Incoming transactions per second",
+            "title": "Process CPU 100-p",
             "tooltip": {
                 "shared": true,
                 "sort": 2,
@@ -1982,7 +2326,7 @@
                     "label": null,
                     "logBase": 1,
                     "max": null,
-                    "min": "0",
+                    "min": null,
                     "show": true
                 },
                 {
@@ -1991,7 +2335,7 @@
                     "logBase": 1,
                     "max": null,
                     "min": null,
-                    "show": false
+                    "show": true
                 }
             ],
             "yaxis": {
@@ -2004,14 +2348,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 0,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 7,
                 "x": 0,
-                "y": 43
+                "y": 45
             },
+            "hiddenSeries": false,
             "id": 54,
             "legend": {
                 "avg": false,
@@ -2026,9 +2379,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2038,7 +2394,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "rate(BlockStorage_FileSystemSize_Bytes[2m])",
+                    "expr": "rate(BlockStorage_FileSystemSize_Bytes{vcid=~\"$vchain\"}[2m])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -2091,14 +2447,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 0,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 7,
                 "x": 7,
-                "y": 43
+                "y": 45
             },
+            "hiddenSeries": false,
             "id": 2,
             "legend": {
                 "alignAsTable": false,
@@ -2117,9 +2482,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2129,7 +2497,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "rate(BlockStorage_BlockHeight[30s])",
+                    "expr": "rate(BlockStorage_BlockHeight{vcid=~\"$vchain\"}[30s])",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
@@ -2182,11 +2550,12 @@
         },
         {
             "collapsed": true,
+            "datasource": null,
             "gridPos": {
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 49
+                "y": 51
             },
             "id": 76,
             "panels": [],
@@ -2195,11 +2564,12 @@
         },
         {
             "collapsed": false,
+            "datasource": null,
             "gridPos": {
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 50
+                "y": 52
             },
             "id": 42,
             "panels": [],
@@ -2211,14 +2581,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 4,
                 "w": 10,
                 "x": 0,
-                "y": 51
+                "y": 53
             },
+            "hiddenSeries": false,
             "id": 50,
             "legend": {
                 "avg": false,
@@ -2234,9 +2613,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2251,7 +2633,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "BlockStorage_BlockHeight-TransactionPool_BlockHeight",
+                    "expr": "BlockStorage_BlockHeight{vcid=~\"$vchain\"}-TransactionPool_BlockHeight{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "instant": false,
                     "interval": "",
@@ -2260,7 +2642,7 @@
                     "refId": "A"
                 },
                 {
-                    "expr": "BlockStorage_BlockHeight-StateStorage_BlockHeight",
+                    "expr": "BlockStorage_BlockHeight{vcid=~\"$vchain\"}-StateStorage_BlockHeight{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
@@ -2314,14 +2696,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 5,
                 "w": 4,
                 "x": 10,
-                "y": 51
+                "y": 53
             },
+            "hiddenSeries": false,
             "id": 58,
             "legend": {
                 "avg": false,
@@ -2336,9 +2727,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2348,7 +2742,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "rate(PublicApi_TotalTransactionsErrAddingToTxPool_Count[1m])",
+                    "expr": "rate(PublicApi_TotalTransactionsErrAddingToTxPool_Count{vcid=~\"$vchain\"}[1m])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -2410,14 +2804,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 5,
                 "w": 3,
                 "x": 14,
-                "y": 51
+                "y": 53
             },
+            "hiddenSeries": false,
             "id": 62,
             "legend": {
                 "avg": false,
@@ -2432,9 +2835,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2444,7 +2850,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "PublicApi_TotalTransactionsErrNilRequest_Count",
+                    "expr": "PublicApi_TotalTransactionsErrNilRequest_Count{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -2497,14 +2903,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 5,
                 "w": 3,
                 "x": 17,
-                "y": 51
+                "y": 53
             },
+            "hiddenSeries": false,
             "id": 63,
             "legend": {
                 "avg": false,
@@ -2519,9 +2934,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2531,7 +2949,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "PublicApi_TotalTransactionsErrInvalidRequest_Count",
+                    "expr": "PublicApi_TotalTransactionsErrInvalidRequest_Count{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -2584,14 +3002,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 5,
                 "w": 3,
                 "x": 20,
-                "y": 51
+                "y": 53
             },
+            "hiddenSeries": false,
             "id": 64,
             "legend": {
                 "avg": false,
@@ -2606,9 +3033,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2618,7 +3048,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "PublicApi_TotalTransactionsErrDuplicate_Count",
+                    "expr": "PublicApi_TotalTransactionsErrDuplicate_Count{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -2671,14 +3101,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 5,
                 "w": 5,
                 "x": 0,
-                "y": 55
+                "y": 57
             },
+            "hiddenSeries": false,
             "id": 40,
             "legend": {
                 "avg": false,
@@ -2693,9 +3132,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2705,7 +3147,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "rate(BlockSync_ProcessingBlocksState_FailedToValidateBlocks_Count[1m])",
+                    "expr": "rate(BlockSync_ProcessingBlocksState_FailedToValidateBlocks_Count{vcid=~\"$vchain\"}[1m])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -2758,14 +3200,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 5,
                 "w": 5,
                 "x": 5,
-                "y": 55
+                "y": 57
             },
+            "hiddenSeries": false,
             "id": 38,
             "legend": {
                 "avg": false,
@@ -2780,9 +3231,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2792,7 +3246,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "rate(Gossip_OutgoingConnection_KeepaliveErrors_Count[10m])",
+                    "expr": "rate(Gossip_OutgoingConnection_KeepaliveErrors_Count{vcid=~\"$vchain\"}[10m])",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -2845,14 +3299,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 6,
                 "x": 12,
-                "y": 56
+                "y": 58
             },
+            "hiddenSeries": false,
             "id": 36,
             "legend": {
                 "avg": false,
@@ -2867,9 +3330,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -2879,7 +3345,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "quantile_over_time(0.9,OS_Process_CPU_PerCent[1m])  ",
+                    "expr": "quantile_over_time(0.9,OS_Process_CPU_PerCent{vcid=~\"$vchain\"}[1m])  ",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -2932,101 +3398,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
-            "fill": 1,
-            "gridPos": {
-                "h": 6,
-                "w": 6,
-                "x": 18,
-                "y": 56
-            },
-            "id": 84,
-            "legend": {
-                "avg": false,
-                "current": false,
-                "max": false,
-                "min": false,
-                "show": false,
-                "total": false,
-                "values": false
-            },
-            "lines": true,
-            "linewidth": 1,
-            "links": [],
-            "nullPointMode": "null",
-            "options": {},
-            "paceLength": 10,
-            "percentage": false,
-            "pointradius": 2,
-            "points": false,
-            "renderer": "flot",
-            "seriesOverrides": [],
-            "spaceLength": 10,
-            "stack": false,
-            "steppedLine": false,
-            "targets": [
-                {
-                    "expr": "quantile_over_time(1,OS_Process_CPU_PerCent[1m])  ",
-                    "format": "time_series",
-                    "intervalFactor": 1,
-                    "legendFormat": "{{machine}}",
-                    "refId": "A"
-                }
-            ],
-            "thresholds": [],
-            "timeFrom": null,
-            "timeRegions": [],
-            "timeShift": null,
-            "title": "Process CPU 100-p",
-            "tooltip": {
-                "shared": true,
-                "sort": 2,
-                "value_type": "individual"
-            },
-            "type": "graph",
-            "xaxis": {
-                "buckets": null,
-                "mode": "time",
-                "name": null,
-                "show": true,
-                "values": []
-            },
-            "yaxes": [
-                {
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
                 },
-                {
-                    "format": "short",
-                    "label": null,
-                    "logBase": 1,
-                    "max": null,
-                    "min": null,
-                    "show": true
-                }
-            ],
-            "yaxis": {
-                "align": false,
-                "alignLevel": null
-            }
-        },
-        {
-            "aliasColors": {},
-            "bars": false,
-            "dashLength": 10,
-            "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+                "overrides": []
+            },
             "fill": 0,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 6,
                 "x": 0,
-                "y": 60
+                "y": 62
             },
+            "hiddenSeries": false,
             "id": 22,
             "legend": {
                 "avg": false,
@@ -3041,9 +3429,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -3053,7 +3444,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "Runtime_Uptime_Seconds",
+                    "expr": "Runtime_Uptime_Seconds{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
@@ -3102,18 +3493,85 @@
             }
         },
         {
+            "alert": {
+                "conditions": [
+                    {
+                        "evaluator": {
+                            "params": [
+                                15
+                            ],
+                            "type": "gt"
+                        },
+                        "operator": {
+                            "type": "and"
+                        },
+                        "query": {
+                            "params": [
+                                "A",
+                                "1m",
+                                "now"
+                            ]
+                        },
+                        "reducer": {
+                            "params": [],
+                            "type": "last"
+                        },
+                        "type": "query"
+                    },
+                    {
+                        "evaluator": {
+                            "params": [
+                                -15
+                            ],
+                            "type": "lt"
+                        },
+                        "operator": {
+                            "type": "or"
+                        },
+                        "query": {
+                            "params": [
+                                "A",
+                                "1m",
+                                "now"
+                            ]
+                        },
+                        "reducer": {
+                            "params": [],
+                            "type": "last"
+                        },
+                        "type": "query"
+                    }
+                ],
+                "executionErrorState": "keep_state",
+                "for": "30s",
+                "frequency": "10s",
+                "handler": 1,
+                "message": "Time drift alert!",
+                "name": "Time drift > 500ms",
+                "noDataState": "no_data",
+                "notifications": []
+            },
             "aliasColors": {},
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 0,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 6,
                 "w": 6,
                 "x": 6,
-                "y": 60
+                "y": 62
             },
+            "hiddenSeries": false,
             "id": 86,
             "legend": {
                 "avg": false,
@@ -3128,9 +3586,12 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "paceLength": 10,
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -3140,14 +3601,22 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "OS_Time_Drift_Millis",
+                    "expr": "OS_Time_Drift_Millis{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "intervalFactor": 1,
                     "legendFormat": "{{machine}}",
                     "refId": "A"
                 }
             ],
-            "thresholds": [],
+            "thresholds": [
+                {
+                    "colorMode": "critical",
+                    "fill": true,
+                    "line": true,
+                    "op": "gt",
+                    "value": 15
+                }
+            ],
             "timeFrom": null,
             "timeRegions": [],
             "timeShift": null,
@@ -3193,14 +3662,23 @@
             "bars": false,
             "dashLength": 10,
             "dashes": false,
-            "datasource": "${DS_MARVIN-PROMETHEUS}",
+            "datasource": "Prom-Prod",
+            "fieldConfig": {
+                "defaults": {
+                    "custom": {},
+                    "links": []
+                },
+                "overrides": []
+            },
             "fill": 1,
+            "fillGradient": 0,
             "gridPos": {
                 "h": 8,
                 "w": 12,
                 "x": 12,
-                "y": 62
+                "y": 64
             },
+            "hiddenSeries": false,
             "id": 88,
             "legend": {
                 "avg": false,
@@ -3215,8 +3693,11 @@
             "linewidth": 1,
             "links": [],
             "nullPointMode": "null",
-            "options": {},
+            "options": {
+                "alertThreshold": true
+            },
             "percentage": false,
+            "pluginVersion": "7.3.4",
             "pointradius": 2,
             "points": false,
             "renderer": "flot",
@@ -3226,7 +3707,7 @@
             "steppedLine": false,
             "targets": [
                 {
-                    "expr": "TransactionPool_CommitRate_PerSecond",
+                    "expr": "TransactionPool_CommitRate_PerSecond{vcid=~\"$vchain\"}",
                     "format": "time_series",
                     "interval": "",
                     "intervalFactor": 1,
@@ -3277,11 +3758,12 @@
             }
         },
         {
+            "datasource": null,
             "gridPos": {
                 "h": 1,
                 "w": 24,
                 "x": 0,
-                "y": 70
+                "y": 72
             },
             "id": 10,
             "title": "OS",
@@ -3289,7 +3771,7 @@
         }
     ],
     "refresh": "10s",
-    "schemaVersion": 16,
+    "schemaVersion": 26,
     "style": "dark",
     "tags": [
         "orbs",
@@ -3298,19 +3780,109 @@
     "templating": {
         "list": [
             {
-                "datasource": null,
-                "filters": [
+                "allValue": null,
+                "current": {
+                    "selected": false,
+                    "text": "1000006",
+                    "value": "1000006"
+                },
+                "datasource": "Prom-Prod",
+                "definition": "label_values(vchain)",
+                "error": null,
+                "hide": 0,
+                "includeAll": false,
+                "label": null,
+                "multi": false,
+                "name": "vchain",
+                "options": [
                     {
-                        "key": "vchain",
-                        "operator": "=",
+                        "selected": false,
+                        "text": "1002",
+                        "value": "1002"
+                    },
+                    {
+                        "selected": false,
+                        "text": "1003",
+                        "value": "1003"
+                    },
+                    {
+                        "selected": false,
+                        "text": "1660000",
+                        "value": "1660000"
+                    },
+                    {
+                        "selected": false,
+                        "text": "7777",
+                        "value": "7777"
+                    },
+                    {
+                        "selected": false,
+                        "text": "1000001",
+                        "value": "1000001"
+                    },
+                    {
+                        "selected": false,
+                        "text": "1001",
+                        "value": "1001"
+                    },
+                    {
+                        "selected": false,
+                        "text": "1960000",
+                        "value": "1960000"
+                    },
+                    {
+                        "selected": false,
+                        "text": "5110",
+                        "value": "5110"
+                    },
+                    {
+                        "selected": false,
+                        "text": "1000",
+                        "value": "1000"
+                    },
+                    {
+                        "selected": false,
+                        "text": "1100000",
                         "value": "1100000"
                     }
                 ],
-                "hide": 0,
-                "label": "",
-                "name": "Filters",
+                "query": "label_values(vchain)",
+                "refresh": 0,
+                "regex": "",
                 "skipUrlSync": false,
-                "type": "adhoc"
+                "sort": 0,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            },
+            {
+                "allValue": null,
+                "current": {
+                    "selected": false,
+                    "text": "130_193_51_109",
+                    "value": "130_193_51_109"
+                },
+                "datasource": "Prom-Prod",
+                "definition": "label_values(machine)",
+                "error": null,
+                "hide": 0,
+                "includeAll": false,
+                "label": null,
+                "multi": true,
+                "name": "validator",
+                "options": [],
+                "query": "label_values(machine)",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 1,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
             }
         ]
     },
@@ -3345,7 +3917,7 @@
         ]
     },
     "timezone": "",
-    "title": "Detailed",
+    "title": "Orbs PROD DevOps",
     "uid": "Eqvddt3iz",
-    "version": 1
+    "version": 8
 }
