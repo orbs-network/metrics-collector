@@ -36,27 +36,27 @@ async function getConfiguration() {
 function getConfigurationOfTrynet() {
     const nodes = [
         {
-            name: 'node1',
+            Name: 'node1',
             ip: '13.125.39.36',
         },
         {
-            name: 'us-1',
+            Name: 'us-1',
             ip: '184.72.231.126',
         },
         {
-            name: 'us-2',
+            Name: 'us-2',
             ip: '34.195.181.208',
         },
         {
-            name: 'us-3',
+            Name: 'us-3',
             ip: '13.57.172.231',
         },
         {
-            name: 'us-4',
+            Name: 'us-4',
             ip: '18.144.136.174',
         },
         {
-            name: 'us-5',
+            Name: 'us-5',
             ip: '52.9.126.127'
         },
     ];
@@ -74,7 +74,7 @@ function getConfigurationOfTrynet() {
                 target: `${ip}`,
                 metrics_path: `/vchains/${vcId}/metrics.prometheus`,
                 vcid: vcId.toString(),
-                label: nodes[n].name,
+                label: nodes[n].Name,
             };
             jobs.push(job);
         }
